@@ -1,0 +1,34 @@
+.post{
+    width: 70% !important;
+    margin: 2rem auto;
+}
+.postImage{
+    width: 100%;
+    aspect-ratio: 16/10;
+    margin-bottom: 1rem;
+}
+
+.tag {
+    padding: 4px 15px;
+    background-color: rgba(52, 253, 253, 0.597);
+    border-radius: 7px;
+}
+.github-view >a{
+    /* color: rgb(135, 152, 250) !important; */
+    font-size: x-large !important;
+    text-decoration: none;
+}
+.git-view{
+    margin-right: 5px;
+}
+
+@media (max-width: 640px) {
+    .post{
+        width: 95% !important;
+        margin: 10px auto;
+    }
+    .postImage{
+        margin-bottom: 0.5rem;
+    }
+
+}
