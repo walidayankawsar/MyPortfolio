@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+/* handelling dark and night mode  */
+:root {
+    --fontColor: rgba(255,255,255,0.8);
+    --BGcolor: #17191a;
+    --navBG: #242627;
+}
+body.dark-mode {
+    /* --fontColor: #6c757d; */
+    --fontColor: rgba(255,255,255,0.8) !important;
+    --BGcolor: #17191a;
+
+    background-color: #17191a !important;
+    color: rgba(255,255,255,0.8) !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+body.light-mode{
+    --fontColor: black;
+    --BGcolor: white;
+    --navBG: #eeeeee;
+
+    background-color: white !important;
+    color: black !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+/* handelling dark and night mode end  */
+
+
+nav {
+    background-color: var(--BGcolor) !important;
+    color: var(--fontColor) !important;
+    padding: 0.5rem 4rem !important;
+}
+
+.bgColor {
+    background-color: var(--BGcolor) !important;
+    color: #6c757d !important;
+}
+
+.activeNav a {
+    text-decoration: underline !important;
+}
+
+.navbar {
+    background-color: var(--navBG) !important;
+}
+
+.nav-link,
+.navbar-brand {
+    color: #79828a !important;
+}
+
+.nav-link {
+    position: relative; /* Required for absolute positioning of pseudo-element */
+    text-decoration: none; /* Remove default underline */
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0; /* Start with no underline */
+    height: 2px; /* Adjust the height as needed */
+    background-color: #0088ff; /* Set the color of the underline */
+    transition: width 0.3s ease; /* Add a smooth transition effect */
+}
+
+.nav-link:hover::before {
+    width: 100%; /* Expand the underline from left to right on hover */
+}
+
+
+
+section {
+    padding: 0 4.5rem;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+}
+
+footer>a>i {
+    color: var(--fontColor);
+    font-size: large;
+    margin-right: 4px;
+}
+
+.navbar-toggler{
+    color: red !important;
+}
+.navbar-toggler-icon{
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28121,130,138, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+.navbar-toggler:focus {
+    outline: none; /* Remove the default focus outline */
+    box-shadow: 0 0 0 2px var(--fontColor); /* Change the color and width of the border shadow */
+}
+
+.navbar-toggler{
+    border-color: #242627 !important;
+}
+.navbar-toggler:hover{
+    border-color: #242627 !important;
+}
+@media (max-width: 640px) {
+    section {
+        padding: 0 20px;
+    }
+    .navbar-toggler{
+        color: red !important;
+    }
+    .navbar-toggler-icon{
+        color: green !important;
+    }
+    
+}
