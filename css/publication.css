@@ -33,9 +33,9 @@
     padding-top: 2rem;
     padding-bottom: 1rem;
     padding-right: 1rem;
-    background-color: #242627;
+    background-color: transparent;
     border-radius: 5px;
-    color: white;
+    color: inherit;
 }
 
 
