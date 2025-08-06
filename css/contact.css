@@ -15,11 +15,13 @@ body {
 }
 
 .container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 400px;
+  margin: auto;
+  margin-top: 80px; /* space below navbar */
+  max-width: 400px;
+  min-height: 500px; /* adjust for top/bottom space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-radius: 8px;
   padding: 50px;
   text-align: center;
@@ -27,6 +29,7 @@ body {
   backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(7px);
 }
+
 
 
 form {
