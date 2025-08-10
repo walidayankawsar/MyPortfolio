@@ -13,14 +13,6 @@
     background-color: rgba(52, 253, 253, 0.597);
     border-radius: 7px;
 }
-.github-view >a{
-    /* color: rgb(135, 152, 250) !important; */
-    font-size: x-large !important;
-    text-decoration: none;
-}
-.git-view{
-    margin-right: 5px;
-}
 
 @media (max-width: 640px) {
     .post{
@@ -31,4 +23,36 @@
         margin-bottom: 0.5rem;
     }
 
+}
+
+
+
+
+
+.project-links a {
+    padding: 8px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: large;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* GitHub button */
+.github-btn {
+    background-color: rgb(0, 162, 255);
+    color: white;
+}
+.github-btn:hover {
+    background-color: #008bf8;
+}
+
+/* Website button */
+.website-btn {
+    background-color: rgb(0, 162, 255);
+    color: white;
+}
+.website-btn:hover {
+    background-color: #008bf8;
 }

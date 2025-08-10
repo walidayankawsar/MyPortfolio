@@ -62,3 +62,20 @@ input::placeholder {
     }
 
 }
+
+
+/* Light/Dark mode friendly hover */
+.post:hover {
+    background-color: rgba(52, 253, 253, 0.15); /* subtle background change */
+    border-color: rgba(52, 253, 253, 0.6); /* border highlight */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* light shadow */
+    transform: translateY(-2px); /* slight lift */
+    transition: all 0.3s ease;
+}
+
+/* Dark mode specific tweak */
+.dark-mode .post:hover {
+    background-color: rgba(52, 253, 253, 0.25);
+    border-color: rgba(52, 253, 253, 0.8);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
