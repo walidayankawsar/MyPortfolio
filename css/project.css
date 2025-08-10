@@ -69,3 +69,23 @@ input::placeholder {
     }
 
 }
+
+/* Glow effect on hover */
+.post {
+    transition: all 0.3s ease;
+}
+
+.post:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(52, 253, 253, 0.6), 
+                0 0 25px rgba(52, 253, 253, 0.4);
+    border-color: rgba(52, 253, 253, 0.8);
+}
+
+/* Dark mode stronger glow */
+.dark-mode .post:hover {
+    box-shadow: 0 0 20px rgba(52, 253, 253, 0.8), 
+                0 0 35px rgba(52, 253, 253, 0.6);
+    border-color: rgba(52, 253, 253, 1);
+}
+
