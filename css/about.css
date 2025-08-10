@@ -31,13 +31,38 @@
     text-decoration: none;
     color: white;
 }
-#CvBtn{
-    background-color:rgb(0, 162, 255);
-    border: none;
+#CvBtn {
+    background-color: rgb(0, 162, 255);
+    border: 2px solid transparent;
     border-radius: 15px;
     padding: 8px 20px !important;
     font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
+
+#CvBtn > a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Light mode hover */
+#CvBtn:hover {
+    border-color: #008bf8;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Dark mode hover effect */
+@media (prefers-color-scheme: dark) {
+    #CvBtn:hover {
+        border-color: #66bfff;
+        box-shadow: 0 4px 18px rgba(255, 255, 255, 0.3);
+        background-color: rgb(0, 140, 220);
+    }
+}
+
+
+
 @media (max-width: 640px) {
     #aboutTop{
         margin-top: 10px;
