@@ -9,3 +9,6 @@ def about(request):
 
 def blog(requets):
     return render(requets, 'pages/blog.html')
+
+def project(request):
+    return render(request, 'pages/project.html')
