@@ -18,3 +18,6 @@ def project(request):
 
 def publications(request):
     return render(request, 'pages/publications.html')
+
+def contact(request):
+    return render(request, 'pages/contact.html')
