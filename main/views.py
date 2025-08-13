@@ -15,3 +15,6 @@ def blog(requets):
 
 def project(request):
     return render(request, 'pages/project.html')
+
+def publications(request):
+    return render(request, 'pages/publications.html')
