@@ -3,11 +3,12 @@ from . models import Profile
 
 # Create your views here.
 def home(request):
-    profile = Profile.objects.all()
+    profile = Profile.objects.first()
     return render(request, 'index.html', {'pic': profile})
 
 def main(request):
-    return render(request, 'index.html')
+    profile = Profile.objects.first()
+    return render(request, 'index.html', {'pic': profile})
 
 def about(request):
     return render(request, 'pages/about.html')
