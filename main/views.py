@@ -1,8 +1,10 @@
 from django.shortcuts import render
+from . models import Profile
 
 # Create your views here.
 def home(request):
-    return render(request, 'index.html')
+    profile = Profile.objects.all()
+    return render(request, 'index.html', {'pic': profile})
 
 def main(request):
     return render(request, 'index.html')
