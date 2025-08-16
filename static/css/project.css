@@ -38,10 +38,19 @@ input::placeholder {
     text-align: left;
 }
 
+
 .tag {
     padding: 4px 15px;
     background-color: rgba(52, 253, 253, 0.597);
     border-radius: 7px;
+    white-space: nowrap; 
+}
+
+/* Tag container flex layout */
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
 }
 
 .project-img{
