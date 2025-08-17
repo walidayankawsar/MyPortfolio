@@ -13,8 +13,11 @@ def main(request):
 def about(request):
     return render(request, 'pages/about.html')
 
-def blog(requets):
-    return render(requets, 'pages/blog.html')
+def blog(request):
+    return render(request, 'pages/blog.html')
+
+def blogdetails(request):
+    return render(request, 'pages/blogDetails.html')
 
 def project(request):
     return render(request, 'pages/project.html')
