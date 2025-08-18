@@ -45,6 +45,8 @@
     font-size: large;
     display: inline-block;
     margin-right: 10px;
+    gap: 5px;
+    margin-top: 15px;
 }
 
 /* GitHub button */
