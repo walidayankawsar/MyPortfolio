@@ -5,10 +5,18 @@ class Profile(models.Model):
     picture = models.ImageField(upload_to='profile/')
     graduate = models.CharField(max_length=100)
     cv = models.FileField(upload_to='cv/', blank=True, null=True)
-    description = models.TextField(max_length=1000)
+    description = models.TextField()
     work = models.CharField(max_length=100)
-    work_experience = models.TextField(max_length=500)
+    work_experience = models.TextField()
     work_date = models.DateField()
     education = models.CharField(max_length=100)
-    education_description = models.TextField(max_length=500)
+    education_description = models.TextField()
     education_date = models.DateField()
+
+class Tag(models.Model):
+    Tag_name = models.CharField(max_length=100)
+
+class Project(models.Model):
+    project_name = models.CharField(max_length=100)
+    tags = models.ManyToManyField(Tag, related_name="posts")
+    description = models.TextField()
