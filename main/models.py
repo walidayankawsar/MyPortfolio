@@ -13,10 +13,12 @@ class Profile(models.Model):
     education_description = models.TextField()
     education_date = models.DateField()
 
-class Tag(models.Model):
+class Project_Tag(models.Model):
     Tag_name = models.CharField(max_length=100)
 
 class Project(models.Model):
     project_name = models.CharField(max_length=100)
-    tags = models.ManyToManyField(Tag, related_name="posts")
+    tags = models.ManyToManyField(Project_Tag, related_name="posts")
     description = models.TextField()
+    github_link = models.URLField()
+    website_link = models.URLField()
