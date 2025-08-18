@@ -22,6 +22,9 @@ def blogdetails(request):
 def project(request):
     return render(request, 'pages/project.html')
 
+def viewProject(request):
+    return render(request, 'pages/viewProject.html')
+
 def publications(request):
     return render(request, 'pages/publications.html')
 
