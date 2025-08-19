@@ -18,7 +18,7 @@ class Project_Tag(models.Model):
 
 class Project(models.Model):
     project_name = models.CharField(max_length=100, blank=True, null=True)
-    tags = models.ManyToManyField(Project_Tag, related_name="posts", blank=True, null=True)
+    tags = models.ManyToManyField(Project_Tag, related_name="posts", blank=True)
     short_description = models.TextField(max_length=500,blank=True, null=True)
     ful_description = models.TextField(blank=True, null=True)
     github_link = models.URLField(blank=True, null=True)
