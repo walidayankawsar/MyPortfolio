@@ -18,8 +18,14 @@ class Project_Tag(models.Model):
 
 class Project(models.Model):
     project_name = models.CharField(max_length=100, blank=True, null=True)
+    picture = models.ImageField(upload_to='picture of project/', blank=True, null=True)
     tags = models.ManyToManyField(Project_Tag, related_name="posts", blank=True)
     short_description = models.TextField(max_length=500,blank=True, null=True)
     ful_description = models.TextField(blank=True, null=True)
     github_link = models.URLField(blank=True, null=True)
     website_link = models.URLField(blank=True, null=True)
+
+class Publications(models.Model):
+    name = models.CharField(max_length=100, blank=True, null=True)
+    date = models.DateField(blank=True, null=True)
+    authors = models.TextField(max_length=200, blank=True, null=True)
