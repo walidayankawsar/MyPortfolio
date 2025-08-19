@@ -29,3 +29,8 @@ class Publications(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
     date = models.DateField(blank=True, null=True)
     authors = models.TextField(max_length=200, blank=True, null=True)
+
+class Contact(models.Model):
+    github = models.URLField(blank=True, null=True)
+    linkedin = models.URLField(blank=True, null=True)
+    mail = models.URLField(blank=True, null=True)
