@@ -14,7 +14,7 @@ class Profile(models.Model):
     education_date = models.DateField(blank=True, null=True)
 
 class Project_Tag(models.Model):
-    Tag_name = models.CharField(max_length=100, blank=True, null=True)
+    Tag_name = models.CharField(max_length=100, unique=True, blank=True, null=True)
 
 class Project(models.Model):
     project_name = models.CharField(max_length=100, blank=True, null=True)
