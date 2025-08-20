@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from . models import Profile
+from . models import Profile, Project, Publications, Blog, Contact
 
 # Create your views here.
 def home(request):
     profile = Profile.objects.first()
-    return render(request, 'index.html', {'pic': profile})
+    link = Contact.objects.first()
+    return render(request, 'index.html', {'profile': profile, 'link': link })
 
 def main(request):
     profile = Profile.objects.first()

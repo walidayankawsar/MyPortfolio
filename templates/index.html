@@ -56,14 +56,14 @@
 
     <!-- image  -->
     <div class="centerParent">
-        <img src="{{ pic.picture.url }}" alt="" id="dp-img">
+        <img src="{{ profile.picture.url }}" alt="" id="dp-img">
     </div>
-    <p id="profession-title">Graduate Student, Uttara University</p>
+    <p id="profession-title">Graduate Student, {{ profile.graduate }}</p>
 
     <footer>
-        <a href="mailto: abc@example.com"><i class="fa-solid fa-envelope"></i></a>
-        <a href=""><i class="fa-brands fa-linkedin"></i></a>
-        <a href=""><i class="fa-brands fa-github"></i></a>
+        <a href="mailto: {{ link.mail }}"><i class="fa-solid fa-envelope"></i></a>
+        <a href="{{ link.linkedin }}"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="{{ link.github }}"><i class="fa-brands fa-github"></i></a>
     </footer>
 
 
