@@ -13,13 +13,14 @@ class Profile(models.Model):
     education_description = models.TextField(blank=True, null=True)
     education_date = models.DateField(blank=True, null=True)
 
-class Project_Tag(models.Model):
+class Tags(models.Model):
     Tag_name = models.CharField(max_length=100, unique=True, blank=True, null=True)
 
 class Project(models.Model):
     project_name = models.CharField(max_length=100, blank=True, null=True)
     picture = models.ImageField(upload_to='picture of project/', blank=True, null=True)
-    tags = models.ManyToManyField(Project_Tag, related_name="posts", blank=True)
+    tag = models.ManyToManyField(Tags, related_name="posts", blank=True)
+    date = models.DateField(blank=True, null=True)
     short_description = models.TextField(max_length=500,blank=True, null=True)
     ful_description = models.TextField(blank=True, null=True)
     github_link = models.URLField(blank=True, null=True)
@@ -29,6 +30,14 @@ class Publications(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
     date = models.DateField(blank=True, null=True)
     authors = models.TextField(max_length=200, blank=True, null=True)
+
+class blog(models.Model):
+    name = models.CharField(max_length=100, blank=True, null=True)
+    picture = models.ImageField(upload_to='picture of blog/', blank=True, null=True)
+    tag = models.ManyToManyField(Tags, related_name="blog", blank=True)
+    date = models.DateField(blank=True, null=True)
+    short_description = models.TextField(max_length=500, blank=True, null=True)
+    ful_description = models.TextField(blank=True, null=True)
 
 class Contact(models.Model):
     github = models.URLField(blank=True, null=True)
