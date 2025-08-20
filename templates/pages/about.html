@@ -59,13 +59,10 @@
 
     <section id="aboutTop">
         <h1>About Me</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, nisi.</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero aut suscipit, quos voluptatibus veniam
-            tenetur facilis dicta esse recusandae vero nulla quaerat ipsam! Vitae natus, ad animi excepturi numquam
-            quisquam maiores. Necessitatibus delectus quae aperiam!</p>
+        <p>{{ about.description }}</p>
 
         <button id="CvBtn">
-            <a target="_blank" href="{{ cv.cv.url }}"> View My CV </a>
+            <a target="_blank" href="{{ about.cv.url }}"> View My CV </a>
         </button>
     </section>
 
@@ -73,8 +70,9 @@
     <section class="py-5" id="work-experience-timeline">
         <h2 class="mt-2 pb-3">Work Experience</h2>
         <ul class="timeline">
+            {% for experiece in experiece %}
             <li class="timeline-item mb-5">
-                <h4 class="">Our company starts its operations</h4>
+                <h4 class="">{{ experiece.work }}</h4>
                 <p class="mb-2 fst-italic fw-lighter">11 March 2020</p>
                 <p class="">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit
@@ -83,6 +81,7 @@
                     voluptas et corrupti distinctio maxime corporis optio? lorem40
                 </p>
             </li>
+            {% endfor %}
             <li class="timeline-item mb-5">
                 <h4 class="">Our company starts its operations</h4>
                 <p class="mb-2 fst-italic fw-lighter">11 March 2020</p>
