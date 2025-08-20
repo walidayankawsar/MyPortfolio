@@ -13,8 +13,9 @@ def main(request):
     return render(request, 'index.html', {'profile': profile, 'link': link})
 
 def about(request):
-    cv = Profile.objects.first()
-    return render(request, 'pages/about.html', {'cv': cv})
+    about = Profile.objects.first()
+    experience = Profile.objects.all()
+    return render(request, 'pages/about.html', {'about': about, 'experiece': experience})
 
 def blog(request):
     return render(request, 'pages/blog.html')
