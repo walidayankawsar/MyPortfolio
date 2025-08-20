@@ -31,7 +31,7 @@ class Publications(models.Model):
     date = models.DateField(blank=True, null=True)
     authors = models.TextField(max_length=200, blank=True, null=True)
 
-class blog(models.Model):
+class Blog(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
     picture = models.ImageField(upload_to='picture of blog/', blank=True, null=True)
     tag = models.ManyToManyField(Tags, related_name="blog", blank=True)
