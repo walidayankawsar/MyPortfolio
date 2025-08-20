@@ -13,7 +13,8 @@ def main(request):
     return render(request, 'index.html', {'profile': profile, 'link': link})
 
 def about(request):
-    return render(request, 'pages/about.html')
+    cv = Profile.objects.first()
+    return render(request, 'pages/about.html', {'cv': cv})
 
 def blog(request):
     return render(request, 'pages/blog.html')
