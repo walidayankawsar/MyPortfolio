@@ -9,7 +9,8 @@ def home(request):
 
 def main(request):
     profile = Profile.objects.first()
-    return render(request, 'index.html', {'profile': profile})
+    link = Contact.objects.first()
+    return render(request, 'index.html', {'profile': profile, 'link': link})
 
 def about(request):
     return render(request, 'pages/about.html')
