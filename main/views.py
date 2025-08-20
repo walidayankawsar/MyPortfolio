@@ -9,7 +9,7 @@ def home(request):
 
 def main(request):
     profile = Profile.objects.first()
-    return render(request, 'index.html', {'pic': profile})
+    return render(request, 'index.html', {'profile': profile})
 
 def about(request):
     return render(request, 'pages/about.html')
