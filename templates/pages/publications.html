@@ -60,10 +60,11 @@
         <div id="publication-div">
             <h1 class="mt-2 pb-3">Publications</h1>
             <ul class="timeline">
+                {% for publication in publication %}
                 <li class="timeline-item mb-5">
                     <h4 class="paper-title">
                         <a href="https://ieeexplore.ieee.org/abstract/document/9230714" 
-                        target="_blank">Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, obcaecati?</a>
+                        target="_blank">{{ publication.name }}</a>
                     </h4>
                     <p class="mb-2 fst-italic fw-lighter"> 2019 - 2023</p>
                     <p>
@@ -71,6 +72,7 @@
                         Abdur Rahim, Mohammad Abdullah, Abdur Rahim, Mohammad Abdullah, Abdur Rahim, Mohammad Abdullah, Abdur Rahim, Mohammad Abdullah.
                     </p>
                 </li>
+                {% endfor %}
 
                 <li class="timeline-item mb-5">
                     <h4 class="paper-title">
