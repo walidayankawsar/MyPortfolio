@@ -30,7 +30,8 @@ def viewProject(request):
     return render(request, 'pages/viewProject.html')
 
 def publications(request):
-    return render(request, 'pages/publications.html')
+    publication = Publications.objects.all()
+    return render(request, 'pages/publications.html', {'publication': publication})
 
 def contact(request):
     return render(request, 'pages/contact.html')
