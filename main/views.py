@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . models import Profile, Project, Publications, Blog, Contact
+from . models import Profile, Project, Publications, Blog, Contact, skill
 
 # Create your views here.
 def home(request):
@@ -14,8 +14,8 @@ def main(request):
 
 def about(request):
     about = Profile.objects.first()
-    experience = Profile.objects.all()
-    return render(request, 'pages/about.html', {'about': about, 'experiece': experience})
+    experience = skill.objects.all()
+    return render(request, 'pages/about.html', {'about': about, 'experience': experience})
 
 def blog(request):
     return render(request, 'pages/blog.html')

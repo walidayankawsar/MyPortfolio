@@ -6,8 +6,10 @@ class Profile(models.Model):
     graduate = models.CharField(max_length=100, blank=True, null=True)
     cv = models.FileField(upload_to='cv/', blank=True, null=True)
     description = models.TextField(blank=True, null=True)
+
+class skill(models.Model):
     work = models.CharField(max_length=100, blank=True, null=True)
-    work_experience = models.TextField(blank=True, null=True)
+    work_description = models.TextField(blank=True, null=True)
     work_date = models.DateField(blank=True, null=True)
     education = models.CharField(max_length=100, blank=True, null=True)
     education_description = models.TextField(blank=True, null=True)
