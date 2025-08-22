@@ -9,8 +9,8 @@ def home(request):
 
 def main(request):
     profile = Profile.objects.first()
-    link = Contact.objects.first()
-    return render(request, 'index.html', {'profile': profile, 'link': link})
+    links = Contact.objects.first()
+    return render(request, 'index.html', {'profile': profile, 'link': links})
 
 def about(request):
     about = Profile.objects.first()
@@ -30,8 +30,9 @@ def viewProject(request):
     return render(request, 'pages/viewProject.html')
 
 def publications(request):
+    links = Contact.objects.first()
     publication = Publications.objects.all()
-    return render(request, 'pages/publications.html', {'publication': publication})
+    return render(request, 'pages/publications.html', {'publication': publication, 'link': links})
 
 def contact(request):
     return render(request, 'pages/contact.html')
