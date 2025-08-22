@@ -69,22 +69,288 @@
 
             <div id="posts-container">
 
-            <div id="posts-container">
                 {% for post in posts %}
                     <a href="{% url 'blogdetails' post.id %}" class="post">
-                        <h4>{{ post.title }}</h4>
+                        <h4>{{ post.name }}</h4>
                         <div class="tags-container">
                             <span style="font-weight: 800;">Tags: </span>
                             {% for tag in post.tags.all %}
-                                <span class="tag">{{ tag.name }}</span>
+                                <span class="tag">{{ tag.Tag_name }}</span>
                             {% endfor %}
                         </div>
-                        <p>{{ post.content|truncatewords:30 }}</p>
-                        <p class="blog-date fst-italic fw-lighter">{{ post.created_at|date:"d-m-Y" }}</p>
+                        <p>{{ post.short_description|truncatewords:30 }}</p>
+                        <p class="blog-date fst-italic fw-lighter">{{ post.date|date:"d-m-Y" }}</p>
                     </a>
                 {% endfor %}
-            </div>
 
+
+
+                
+
+                <form action="blogDetails.html" class="post">
+                    <input type="hidden">
+                    <button type="submit">
+                        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
+            
+                        <!-- Tag container -->
+                        <div class="tags-container">
+                            <span style="font-weight: 800;">Tags: </span>
+                            <span class="tag">Machine</span>
+                            <span class="tag">News Paper</span>
+                            <span class="tag">NN Network</span>
+                            <span class="tag">Deep Learning</span>
+                        </div>
+
+                        <p>
+                            Blog Title Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                            Reprehenderit in ipsam debitis dolorum eligendi nesciunt illum assumenda,
+                            deserunt earum!
+                        </p>
+                        <p class="blog-date fst-italic fw-lighter">12-8-2049</p>
+                    </button>
+                </form>
+                <form action="blogDetails.html" class="post">
+                    <input type="hidden">
+                    <button type="submit">
+                        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
+            
+                        <!-- Tag container -->
+                        <div class="tags-container">
+                            <span style="font-weight: 800;">Tags: </span>
+                            <span class="tag">Machine</span>
+                            <span class="tag">News Paper</span>
+                            <span class="tag">NN Network</span>
+                            <span class="tag">Deep Learning</span>
+                        </div>
+
+                        <p>
+                            Blog Title Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                            Reprehenderit in ipsam debitis dolorum eligendi nesciunt illum assumenda,
+                            deserunt earum!
+                        </p>
+                        <p class="blog-date fst-italic fw-lighter">12-8-2049</p>
+                    </button>
+                </form>
+                <form action="blogDetails.html" class="post">
+                    <input type="hidden">
+                    <button type="submit">
+                        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
+            
+                        <!-- Tag container -->
+                        <div class="tags-container">
+                            <span style="font-weight: 800;">Tags: </span>
+                            <span class="tag">Machine</span>
+                            <span class="tag">News Paper</span>
+                            <span class="tag">NN Network</span>
+                            <span class="tag">Deep Learning</span>
+                        </div>
+
+                        <p>
+                            Blog Title Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                            Reprehenderit in ipsam debitis dolorum eligendi nesciunt illum assumenda,
+                            deserunt earum!
+                        </p>
+                        <p class="blog-date fst-italic fw-lighter">12-8-2049</p>
+                    </button>
+                </form>
+                <form action="blogDetails.html" class="post">
+                    <input type="hidden">
+                    <button type="submit">
+                        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
+            
+                        <!-- Tag container -->
+                        <div class="tags-container">
+                            <span style="font-weight: 800;">Tags: </span>
+                            <span class="tag">Machine</span>
+                            <span class="tag">News Paper</span>
+                            <span class="tag">NN Network</span>
+                            <span class="tag">Deep Learning</span>
+                        </div>
+
+                        <p>
+                            Blog Title Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                            Reprehenderit in ipsam debitis dolorum eligendi nesciunt illum assumenda,
+                            deserunt earum!
+                        </p>
+                        <p class="blog-date fst-italic fw-lighter">12-8-2049</p>
+                    </button>
+                </form>
+                <form action="blogDetails.html" class="post">
+                    <input type="hidden">
+                    <button type="submit">
+                        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
+            
+                        <!-- Tag container -->
+                        <div class="tags-container">
+                            <span style="font-weight: 800;">Tags: </span>
+                            <span class="tag">Machine</span>
+                            <span class="tag">News Paper</span>
+                            <span class="tag">NN Network</span>
+                            <span class="tag">Deep Learning</span>
+                        </div>
+
+                        <p>
+                            Blog Title Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                            Reprehenderit in ipsam debitis dolorum eligendi nesciunt illum assumenda,
+                            deserunt earum!
+                        </p>
+                        <p class="blog-date fst-italic fw-lighter">12-8-2049</p>
+                    </button>
+                </form>
+                <form action="blogDetails.html" class="post">
+                    <input type="hidden">
+                    <button type="submit">
+                        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
+            
+                        <!-- Tag container -->
+                        <div class="tags-container">
+                            <span style="font-weight: 800;">Tags: </span>
+                            <span class="tag">Machine</span>
+                            <span class="tag">News Paper</span>
+                            <span class="tag">NN Network</span>
+                            <span class="tag">Deep Learning</span>
+                        </div>
+
+                        <p>
+                            Blog Title Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                            Reprehenderit in ipsam debitis dolorum eligendi nesciunt illum assumenda,
+                            deserunt earum!
+                        </p>
+                        <p class="blog-date fst-italic fw-lighter">12-8-2049</p>
+                    </button>
+                </form>
+                <form action="blogDetails.html" class="post">
+                    <input type="hidden">
+                    <button type="submit">
+                        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
+            
+                        <!-- Tag container -->
+                        <div class="tags-container">
+                            <span style="font-weight: 800;">Tags: </span>
+                            <span class="tag">Machine</span>
+                            <span class="tag">News Paper</span>
+                            <span class="tag">NN Network</span>
+                            <span class="tag">Deep Learning</span>
+                        </div>
+
+                        <p>
+                            Blog Title Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                            Reprehenderit in ipsam debitis dolorum eligendi nesciunt illum assumenda,
+                            deserunt earum!
+                        </p>
+                        <p class="blog-date fst-italic fw-lighter">12-8-2049</p>
+                    </button>
+                </form>
+                <form action="blogDetails.html" class="post">
+                    <input type="hidden">
+                    <button type="submit">
+                        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
+            
+                        <!-- Tag container -->
+                        <div class="tags-container">
+                            <span style="font-weight: 800;">Tags: </span>
+                            <span class="tag">Machine</span>
+                            <span class="tag">News Paper</span>
+                            <span class="tag">NN Network</span>
+                            <span class="tag">Deep Learning</span>
+                        </div>
+
+                        <p>
+                            Blog Title Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                            Reprehenderit in ipsam debitis dolorum eligendi nesciunt illum assumenda,
+                            deserunt earum!
+                        </p>
+                        <p class="blog-date fst-italic fw-lighter">12-8-2049</p>
+                    </button>
+                </form>
+                <form action="blogDetails.html" class="post">
+                    <input type="hidden">
+                    <button type="submit">
+                        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
+            
+                        <!-- Tag container -->
+                        <div class="tags-container">
+                            <span style="font-weight: 800;">Tags: </span>
+                            <span class="tag">Machine</span>
+                            <span class="tag">News Paper</span>
+                            <span class="tag">NN Network</span>
+                            <span class="tag">Deep Learning</span>
+                        </div>
+
+                        <p>
+                            Blog Title Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                            Reprehenderit in ipsam debitis dolorum eligendi nesciunt illum assumenda,
+                            deserunt earum!
+                        </p>
+                        <p class="blog-date fst-italic fw-lighter">12-8-2049</p>
+                    </button>
+                </form>
+                <form action="blogDetails.html" class="post">
+                    <input type="hidden">
+                    <button type="submit">
+                        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
+            
+                        <!-- Tag container -->
+                        <div class="tags-container">
+                            <span style="font-weight: 800;">Tags: </span>
+                            <span class="tag">Machine</span>
+                            <span class="tag">News Paper</span>
+                            <span class="tag">NN Network</span>
+                            <span class="tag">Deep Learning</span>
+                        </div>
+
+                        <p>
+                            Blog Title Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                            Reprehenderit in ipsam debitis dolorum eligendi nesciunt illum assumenda,
+                            deserunt earum!
+                        </p>
+                        <p class="blog-date fst-italic fw-lighter">12-8-2049</p>
+                    </button>
+                </form>
+                <form action="blogDetails.html" class="post">
+                    <input type="hidden">
+                    <button type="submit">
+                        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
+            
+                        <!-- Tag container -->
+                        <div class="tags-container">
+                            <span style="font-weight: 800;">Tags: </span>
+                            <span class="tag">Machine</span>
+                            <span class="tag">News Paper</span>
+                            <span class="tag">NN Network</span>
+                            <span class="tag">Deep Learning</span>
+                        </div>
+
+                        <p>
+                            Blog Title Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                            Reprehenderit in ipsam debitis dolorum eligendi nesciunt illum assumenda,
+                            deserunt earum!
+                        </p>
+                        <p class="blog-date fst-italic fw-lighter">12-8-2049</p>
+                    </button>
+                </form>
+                <form action="blogDetails.html" class="post">
+                    <input type="hidden">
+                    <button type="submit">
+                        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
+            
+                        <!-- Tag container -->
+                        <div class="tags-container">
+                            <span style="font-weight: 800;">Tags: </span>
+                            <span class="tag">Machine</span>
+                            <span class="tag">News Paper</span>
+                            <span class="tag">NN Network</span>
+                            <span class="tag">Deep Learning</span>
+                        </div>
+
+                        <p>
+                            Blog Title Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                            Reprehenderit in ipsam debitis dolorum eligendi nesciunt illum assumenda,
+                            deserunt earum!
+                        </p>
+                        <p class="blog-date fst-italic fw-lighter">12-8-2049</p>
+                    </button>
+                </form>
             </div>
         </div>
     </section>
