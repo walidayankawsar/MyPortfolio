@@ -40,6 +40,7 @@ class Blog(models.Model):
     date = models.DateField(blank=True, null=True)
     short_description = models.TextField(max_length=500, blank=True, null=True)
     ful_description = models.TextField(blank=True, null=True)
+    slug = models.SlugField(unique=True)
 
 class Contact(models.Model):
     github = models.URLField(blank=True, null=True)
