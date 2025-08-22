@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from . models import Profile, Project, Publications, Blog, Contact, skill
 
 # Create your views here.
@@ -17,11 +17,14 @@ def about(request):
     experience = skill.objects.all()
     return render(request, 'pages/about.html', {'about': about, 'experience': experience})
 
-def blog(request):
     return render(request, 'pages/blog.html')
+def blog(request):
+    posts = Blog.objects.all()
+    return render(request, 'pages/blog.html', {'posts': posts})
 
-def blogdetails(request):
-    return render(request, 'pages/blogDetails.html')
+def blogdetails(request, post_id):
+    post = get_object_or_404(Blog, id=post_id)
+    return render(request, 'pages/blogDetails.html', {'post': post})
 
 def project(request):
     return render(request, 'pages/project.html')
