@@ -38,7 +38,13 @@ def blogdetails(request, post_id):
 def project(request):
     return render(request, 'pages/project.html')
 
+def project_2(request, post_id):
+    return render(request, 'pages/project.html')
+
 def viewProject(request):
+    return render(request, 'pages/viewProject.html')
+
+def viewProject_2(request, post_id):
     return render(request, 'pages/viewProject.html')
 
 def publications(request):
