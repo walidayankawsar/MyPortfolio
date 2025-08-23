@@ -17,6 +17,11 @@ def about(request):
     experience = skill.objects.all()
     return render(request, 'pages/about.html', {'about': about, 'experience': experience})
 
+def about_2(request, post_id):
+    about = get_object_or_404(Profile, id=post_id)
+    experience = skill.objects.all()
+    return render(request, 'pages/about.html', {'about': about, 'experience': experience})
+
 def blog(request):
     posts = Blog.objects.all()
     return render(request, 'pages/blog.html', {'posts': posts})
@@ -33,6 +38,11 @@ def viewProject(request):
     return render(request, 'pages/viewProject.html')
 
 def publications(request):
+    links = Contact.objects.first()
+    publication = Publications.objects.all()
+    return render(request, 'pages/publications.html', {'publication': publication, 'link': links})
+
+def publications_2(request, post_id):
     links = Contact.objects.first()
     publication = Publications.objects.all()
     return render(request, 'pages/publications.html', {'publication': publication, 'link': links})
