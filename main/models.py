@@ -39,7 +39,7 @@ class Blog(models.Model):
     tag = models.ManyToManyField(Tags, related_name="blog", blank=True)
     date = models.DateField(blank=True, null=True)
     short_description = models.TextField(max_length=500, blank=True, null=True)
-    ful_description = models.TextField(blank=True, null=True)
+    full_description = models.TextField(blank=True, null=True)
 
 class Contact(models.Model):
     github = models.URLField(blank=True, null=True)
