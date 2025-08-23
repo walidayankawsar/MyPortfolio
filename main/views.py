@@ -23,8 +23,9 @@ def blog(request):
     return render(request, 'pages/blog.html', {'posts': posts})
 
 def blogdetails(request, post_id):
+    links = Contact.objects.first()
     post = get_object_or_404(Blog, id=post_id)
-    return render(request, 'pages/blogDetails.html', {'post': post})
+    return render(request, 'pages/blogDetails.html', {'post': post, 'link': links})
 
 def project(request):
     return render(request, 'pages/project.html')
