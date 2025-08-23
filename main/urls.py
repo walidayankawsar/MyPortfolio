@@ -12,4 +12,6 @@ urlpatterns = [
     path('pages/viewProject.html', views.viewProject, name='viewProject'),
     path('pages/publications.html', views.publications, name='publications'),
     path('pages/contact.html', views.contact, name='contact'),
+
+    path('pages/index.html', views.main, name='main'),
 ]
