@@ -20,4 +20,6 @@ urlpatterns = [
     path('pages/<int:post_id>/contact.html', views.contact_2, name='contact'),
     path('pages/<int:post_id>/blog.html', views.blog_2, name='blog'),
     path('pages/pages/blog.html', views.blog, name='blog'),
+    path('pages/<int:post_id>/project.html', views.project_2, name='project'),
+    path('pages/<int:post_id>/viewProject.html', views.viewProject_2, name='viewProject'),
 ]
