@@ -32,6 +32,7 @@ class Publications(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
     date = models.DateField(blank=True, null=True)
     authors = models.TextField(max_length=200, blank=True, null=True)
+    link = models.URLField(blank=True, null=True)
 
 class Blog(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
