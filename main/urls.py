@@ -18,4 +18,6 @@ urlpatterns = [
     path('pages/<int:post_id>/publications.html', views.publications_2, name='publications'),
     path('pages/pages/publications.html', views.publications, name='publications'),
     path('pages/<int:post_id>/contact.html', views.contact_2, name='contact'),
+    path('pages/<int:post_id>/blog.html', views.blog_2, name='blog'),
+    path('pages/pages/blog.html', views.blog, name='blog'),
 ]

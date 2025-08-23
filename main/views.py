@@ -18,7 +18,7 @@ def about(request):
     return render(request, 'pages/about.html', {'about': about, 'experience': experience})
 
 def about_2(request, post_id):
-    about = get_object_or_404(Profile, id=post_id)
+    about = Profile.objects.first()
     experience = skill.objects.all()
     return render(request, 'pages/about.html', {'about': about, 'experience': experience})
 
@@ -26,9 +26,13 @@ def blog(request):
     posts = Blog.objects.all()
     return render(request, 'pages/blog.html', {'posts': posts})
 
+def blog_2(request, post_id):
+    posts = Blog.objects.all()
+    return render(request, 'pages/blog.html', {'posts': posts})
+
 def blogdetails(request, post_id):
     links = Contact.objects.first()
-    post = get_object_or_404(Blog, id=post_id)
+    post = Blog.objects.first()
     return render(request, 'pages/blogDetails.html', {'post': post, 'link': links})
 
 def project(request):
