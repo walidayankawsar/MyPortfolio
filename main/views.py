@@ -49,3 +49,7 @@ def publications_2(request, post_id):
 
 def contact(request):
     return render(request, 'pages/contact.html')
+
+def contact_2(request, post_id):
+    page = get_object_or_404(Contact, id=post_id)
+    return render(request, 'pages/contact.html', {'page':page})
