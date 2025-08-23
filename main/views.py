@@ -32,7 +32,7 @@ def blog_2(request, post_id):
 
 def blogdetails(request, post_id):
     links = Contact.objects.first()
-    post = Blog.objects.first()
+    post = get_object_or_404(Blog, id=post_id)
     return render(request, 'pages/blogDetails.html', {'post': post, 'link': links})
 
 def project(request):
@@ -61,5 +61,5 @@ def contact(request):
     return render(request, 'pages/contact.html')
 
 def contact_2(request, post_id):
-    page = get_object_or_404(Contact, id=post_id)
+    page = Contact.objects.first()
     return render(request, 'pages/contact.html', {'page':page})
