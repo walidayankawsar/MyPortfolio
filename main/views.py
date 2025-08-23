@@ -17,7 +17,6 @@ def about(request):
     experience = skill.objects.all()
     return render(request, 'pages/about.html', {'about': about, 'experience': experience})
 
-    return render(request, 'pages/blog.html')
 def blog(request):
     posts = Blog.objects.all()
     return render(request, 'pages/blog.html', {'posts': posts})
