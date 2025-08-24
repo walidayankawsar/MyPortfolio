@@ -13,14 +13,16 @@ def main(request):
     return render(request, 'index.html', {'profile': profile, 'link': links})
 
 def about(request):
+    links = Contact.objects.first()
     about = Profile.objects.first()
     experience = skill.objects.all()
-    return render(request, 'pages/about.html', {'about': about, 'experience': experience})
+    return render(request, 'pages/about.html', {'about': about, 'experience': experience, 'link': links})
 
 def about_2(request, post_id):
+    links = Contact.objects.first()
     about = Profile.objects.first()
     experience = skill.objects.all()
-    return render(request, 'pages/about.html', {'about': about, 'experience': experience})
+    return render(request, 'pages/about.html', {'about': about, 'experience': experience, 'link': links})
 
 def blog(request):
     posts = Blog.objects.all()
