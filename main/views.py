@@ -40,18 +40,18 @@ def blogdetails(request, post_id):
     return render(request, 'pages/blogDetails.html', {'post': post, 'link': links})
 
 def project(request):
-    projects = Project.objects.all()
+    project = Project.objects.all()
     links = Contact.objects.first()
-    return render(request, 'pages/project.html', {'link': links, 'posts': projects})
+    return render(request, 'pages/project.html', {'link': links, 'projects': project})
 
 def project_2(request, post_id):
-    projects = Project.objects.all()
+    project = Project.objects.all()
     links = Contact.objects.first()
-    return render(request, 'pages/project.html', {'link': links, 'posts': projects})
+    return render(request, 'pages/project.html', {'link': links, 'projects': project})
 
 def viewProject(request, post_id):
-    projects = get_object_or_404(Project, id=post_id)
-    return render(request, 'pages/viewProject.html', {'posts': projects})
+    project = get_object_or_404(Project, id=post_id)
+    return render(request, 'pages/viewProject.html', {'projects': project})
 
 def publications(request):
     links = Contact.objects.first()

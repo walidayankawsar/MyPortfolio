@@ -70,8 +70,8 @@
 
             <div id="posts-container">
 
-                {% for post in posts %}
-                <a href="{% url 'viewProject' post.id %}" class="post">
+                {% for project in projects %}
+                <a href="{% url 'viewProject' project.id %}" class="post">
                     <input type="hidden">
                     <button type="submit">
                         <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
