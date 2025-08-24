@@ -41,7 +41,7 @@ def blogdetails(request, post_id):
 
 def project(request):
     links = Contact.objects.first()
-    return render(request, 'pages/project.html', {'link:': links})
+    return render(request, 'pages/project.html', {'link': links})
 
 def project_2(request, post_id):
     links = Contact.objects.first()
