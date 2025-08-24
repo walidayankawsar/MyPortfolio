@@ -25,12 +25,14 @@ def about_2(request, post_id):
     return render(request, 'pages/about.html', {'about': about, 'experience': experience, 'link': links})
 
 def blog(request):
+    links = Contact.objects.first()
     posts = Blog.objects.all()
-    return render(request, 'pages/blog.html', {'posts': posts})
+    return render(request, 'pages/blog.html', {'posts': posts, 'link': links})
 
 def blog_2(request, post_id):
+    links = Contact.objects.first()
     posts = Blog.objects.all()
-    return render(request, 'pages/blog.html', {'posts': posts})
+    return render(request, 'pages/blog.html', {'posts': posts, 'link': links})
 
 def blogdetails(request, post_id):
     links = Contact.objects.first()
