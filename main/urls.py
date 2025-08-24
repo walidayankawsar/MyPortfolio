@@ -24,6 +24,7 @@ urlpatterns = [
     path('pages/<int:post_id>/blog.html', views.blog_2, name='blog'),
     path('pages/<int:post_id>/', views.blogdetails, name='blogdetails'),
     path('pages/<int:post_id>/project.html', views.project_2, name='project'),
+    
     path('pages/project<int:post_id>/', views.viewProject, name='viewProject'),
 
 ]
