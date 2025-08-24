@@ -23,4 +23,5 @@ urlpatterns = [
     path('pages/<int:post_id>/project.html', views.project_2, name='project'),
     path('pages/<int:post_id>/viewProject.html', views.viewProject_2, name='viewProject'),
     path('pages/pages/contact.html', views.contact, name='contact'),
+    path('pages/<int:post_id>/project', views.project_2, name='project'),
 ]
