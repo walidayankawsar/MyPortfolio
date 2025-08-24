@@ -70,7 +70,8 @@
 
             <div id="posts-container">
 
-                <form action="viewProject.html" class="post">
+                {% for post in posts %}
+                <a href="{% url 'viewProject' post.id %}" class="post">
                     <input type="hidden">
                     <button type="submit">
                         <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h4>
@@ -88,7 +89,8 @@
                             debitis dolorum eligendi nesciunt illum assumenda, deserunt earum!</p>
                         <p class="blog-date fst-italic fw-lighter">12-8-2049</p>
                     </button>
-                </form>
+                </a>
+                {% endfor %}
 
 
 
