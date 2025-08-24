@@ -40,10 +40,12 @@ def blogdetails(request, post_id):
     return render(request, 'pages/blogDetails.html', {'post': post, 'link': links})
 
 def project(request):
-    return render(request, 'pages/project.html')
+    links = Contact.objects.first()
+    return render(request, 'pages/project.html', {'link:': links})
 
 def project_2(request, post_id):
-    return render(request, 'pages/project.html')
+    links = Contact.objects.first()
+    return render(request, 'pages/project.html', {'link': links})
 
 def viewProject(request):
     return render(request, 'pages/viewProject.html')
