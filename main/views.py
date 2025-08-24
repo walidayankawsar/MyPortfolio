@@ -14,15 +14,15 @@ def main(request):
 
 def about(request):
     links = Contact.objects.first()
-    about = Profile.objects.first()
+    abouts = Profile.objects.first()
     experience = skill.objects.all()
-    return render(request, 'pages/about.html', {'about': about, 'experience': experience, 'link': links})
+    return render(request, 'pages/about.html', {'about': abouts, 'experience': experience, 'link': links})
 
 def about_2(request, post_id):
     links = Contact.objects.first()
-    about = Profile.objects.first()
+    abouts = Profile.objects.first()
     experience = skill.objects.all()
-    return render(request, 'pages/about.html', {'about': about, 'experience': experience, 'link': links})
+    return render(request, 'pages/about.html', {'about': abouts, 'experience': experience, 'link': links})
 
 def blog(request):
     links = Contact.objects.first()
@@ -40,15 +40,18 @@ def blogdetails(request, post_id):
     return render(request, 'pages/blogDetails.html', {'post': post, 'link': links})
 
 def project(request):
+    projects = Project.objects.all()
     links = Contact.objects.first()
-    return render(request, 'pages/project.html', {'link': links})
+    return render(request, 'pages/project.html', {'link': links, 'posts': projects})
 
 def project_2(request, post_id):
+    projects = Project.objects.all()
     links = Contact.objects.first()
-    return render(request, 'pages/project.html', {'link': links})
+    return render(request, 'pages/project.html', {'link': links, 'posts': projects})
 
-def viewProject(request):
-    return render(request, 'pages/viewProject.html')
+def viewProject(request, post_id):
+    projects = get_object_or_404(Project, id=post_id)
+    return render(request, 'pages/viewProject.html', {'posts': projects})
 
 def viewProject_2(request, post_id):
     return render(request, 'pages/viewProject.html')
