@@ -8,7 +8,6 @@ urlpatterns = [
     path('pages/about.html', views.about, name='about'),
     path('pages/blog.html', views.blog, name='blog'),
     path('pages/project.html', views.project, name='project'),
-    path('pages/<int:postid>/', views.viewProject, name='viewProject'),
     path('pages/publications.html', views.publications, name='publications'),
     path('pages/contact.html', views.contact, name='contact'),
 
@@ -25,5 +24,6 @@ urlpatterns = [
     path('pages/<int:post_id>/blog.html', views.blog_2, name='blog'),
     path('pages/<int:post_id>/', views.blogdetails, name='blogdetails'),
     path('pages/<int:post_id>/project.html', views.project_2, name='project'),
+    path('pages/<int:post_id>/', views.viewProject, name='viewProject'),
 
 ]
