@@ -18,7 +18,7 @@
 <body id="body" class="dark-mode">
     <nav class="navbar navbar-expand-lg">
         <div class="">
-            <a class="navbar-brand" href="index.html">Walid Ayaan Kawsar</a>
+            <a class="navbar-brand" href="{% url 'index' %}">Walid Ayaan Kawsar</a>
         </div>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -38,13 +38,13 @@
                     <a class="nav-link" href="{% url 'project' %}">Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/publications.html">Publications</a>
+                    <a class="nav-link" href="{% url 'publications' %}">Publications</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'blog' %}">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/contact.html">Contact</a>
+                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
                 </li>
                 </li>
                     <button class="nav-link" id="toggle-mode"><i class="fa-solid fa-sun"
