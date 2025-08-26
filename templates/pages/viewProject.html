@@ -65,9 +65,9 @@
             <!-- Tag container -->
             <div class="tags-container">
                 <Span style="font-weight: 600;">Tags: </Span>
-                <span class="tag">Machine</span>
-                <span class="tag">News Paper</span>
-                <span class="tag">NN Network</span>
+                {% for tags in projects.tag.all %}
+                <span class="tag">{{ tags.Tag_name }}</span>
+                {% endfor %}
             </div>
             <!-- project links -->
             <p class="project-links">
