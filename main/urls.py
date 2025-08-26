@@ -11,7 +11,7 @@ urlpatterns = [
     path('pages/publications', views.publications, name='publications'),
     path('pages/contact', views.contact, name='contact'),
 
-    path('pages/index', views.main, name='main'),
+    path('pages/index/', views.main, name='main'),
     path('pages/pages/publications', views.publications, name='publications'),
     path('pages/pages/blog', views.blog, name='blog'),
     path('pages/pages/contact', views.contact, name='contact'),
