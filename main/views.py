@@ -51,7 +51,8 @@ def project_2(request, post_id):
 
 def viewProject(request, post_id):
     project = get_object_or_404(Project, id=post_id)
-    return render(request, 'pages/viewProject.html', {'projects': project})
+    links = Contact.objects.first()
+    return render(request, 'pages/viewProject.html', {'projects': project, 'link': links})
 
 def publications(request):
     links = Contact.objects.first()
