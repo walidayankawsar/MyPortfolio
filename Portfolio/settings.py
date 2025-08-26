@@ -128,3 +128,27 @@ MEDIA_ROOT = BASE_DIR/'media'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+# message section
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.DEBUG: 'debug',
+    messages.INFO: 'info',
+    messages.SUCCESS:'success',
+    messages.WARNING:'warning',
+    messages.ERROR:'error',
+
+}
+
+
+# send message to mail
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'walidayaankawsar@gmail.com'
+EMAIL_HOST_PASSWORD = 'gavl rzmg dyex dhss'
+DEFAULT_FROM_EMAIL =EMAIL_HOST_USER
