@@ -89,7 +89,7 @@ def contact(request):
                 subject,
                 message,
                 settings.EMAIL_HOST_USER,
-                [settings.EMAIL_HOST_USER],  # তোমার ইমেইলে যাবে
+                [settings.EMAIL_HOST_USER],
                 fail_silently=False,
             )
 
@@ -106,9 +106,8 @@ def contact_2(request, post_id):
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
-            contact = form.save()  # ডাটাবেজে save হবে
+            contact = form.save()
 
-            # ইমেইল পাঠানো
             subject = "New Contact Message"
             message = f"""
             Name: {contact.name}
@@ -120,7 +119,7 @@ def contact_2(request, post_id):
                 subject,
                 message,
                 settings.EMAIL_HOST_USER,
-                [settings.EMAIL_HOST_USER],  # তোমার ইমেইলে যাবে
+                [settings.EMAIL_HOST_USER],
                 fail_silently=False,
             )
 
