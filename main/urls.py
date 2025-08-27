@@ -33,4 +33,7 @@ urlpatterns = [
     path('pages/project/<int:post_id>/blog', views.blog_2, name='blog'),
     path('pages/project/<int:post_id>/project', views.project_2, name='project'),
 
+    path('search/', views.search, name='search'),
+
+
 ]
