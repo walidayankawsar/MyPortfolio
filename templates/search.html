@@ -1,0 +1,23 @@
+<h2>Search Results for "{{ query }}"</h2>
+
+{% if results %}
+    <div id="posts-container">
+        {% for post in results %}
+        <a href="{% url 'blogdetails' post.id %}" class="post">
+            <button type="submit">
+                <h4>{{ post.name }}</h4>
+                <div class="tags-container">
+                    <span style="font-weight: 800;">Tags: </span>
+                    {% for tag in post.tag.all %}
+                        <span class="tag">{{ tag.Tag_name }}</span>
+                    {% endfor %}
+                </div>
+                <p>{{ post.short_description|truncatewords:30 }}</p>
+                <p class="blog-date fst-italic fw-lighter">{{ post.date|date:"d-m-Y" }}</p>
+            </button>
+        </a>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No results found.</p>
+{% endif %}
