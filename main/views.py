@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from . models import Profile, Project, Publications, Blog, Contact, skill
+from django.db.models import Q
 
 # Create your views here.
 def home(request):
@@ -130,3 +131,14 @@ def contact_2(request, post_id):
     else:
         form = ContactForm()
     return render(request, 'pages/contact.html', {'page':page, 'form': form})
+
+
+def search(request):
+    query = request.GET.get('q')
+    results = []
+    if query:
+        results = Blog.objects.filter(
+            Q(name__icontains=query) |
+            Q(tag__Tag_name__icontains=query)
+        ).distinct()
+    return render(request, 'search.html', {'results': results, 'query': query})
