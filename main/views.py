@@ -134,6 +134,7 @@ def contact_2(request, post_id):
 
 
 def search(request):
+    link = Contact.objects.first()
     query = request.GET.get('q')
     results = []
     if query:
@@ -141,4 +142,4 @@ def search(request):
             Q(name__icontains=query) |
             Q(tag__Tag_name__icontains=query)
         ).distinct()
-    return render(request, 'pages/search.html', {'results': results, 'query': query})
+    return render(request, 'pages/search.html', {'results': results, 'query': query, 'links': link})
