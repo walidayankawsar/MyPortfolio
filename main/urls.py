@@ -34,6 +34,7 @@ urlpatterns = [
     path('pages/project/<int:post_id>/project', views.project_2, name='project'),
 
     path('pages/search/', views.search, name='search'),
+    path('pages/project_search', views.project_search, name='project_search'),
 
 
 ]
