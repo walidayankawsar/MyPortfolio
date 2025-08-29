@@ -59,14 +59,16 @@
     <!-- project start  -->
     <section>
         <div id="all-projects">
-            <div class="input-group">
-                <input type="text" class="form-control" id="search-text" placeholder="Search Projects Here">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="button" id="search-btn">
-                        <i class="fa fa-search"></i>
-                    </button>
+            <form method='get', action="{% url 'project_search' %}">
+                <div class="input-group">
+                    <input type="text" class="form-control" name='q' placeholder="Search Projects Here" value="{{ request.GET.q }}">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit" id="search-btn">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </form>
 
             <div id="posts-container">
 
