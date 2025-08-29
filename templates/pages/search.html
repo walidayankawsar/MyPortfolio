@@ -63,7 +63,6 @@
                 <a href="{% url 'blogdetails' post.id %}" class="post">
                     <button type="submit">
                         <h4>{{ post.name }}</h4>
-                        <h4>{{ post.project_name }}</h4>
                         <div class="tags-container">
                             <span style="font-weight: 800;">Tags: </span>
                             {% for tag in post.tag.all %}
