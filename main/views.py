@@ -142,7 +142,7 @@ def search(request):
             Q(name__icontains=query) |
             Q(tag__Tag_name__icontains=query)
         ).distinct()
-    return render(request, 'pages/search.html', {'results': results, 'query': query, 'links': link})
+    return render(request, 'pages/blog_search.html', {'results': results, 'query': query, 'links': link})
 
 
 def project_search(request):
