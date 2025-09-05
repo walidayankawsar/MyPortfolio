@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Collect static files
-RUN python manage.py collectstatic --noinput
+#RUN python manage.py collectstatic --noinput
 
 # App run করার জন্য default command
 CMD ["gunicorn", "myproject.wsgi:application", "--bind", "0.0.0.0:8000"]
