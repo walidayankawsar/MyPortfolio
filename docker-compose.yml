@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: django_app
-    command: gunicorn Portfolio.wsgi:application --bind 0.0.0.0:5050
+    command: gunicorn Portfolio.wsgi:application --bind 0.0.0.0:5000
     volumes:
       - .:/app
     ports:
