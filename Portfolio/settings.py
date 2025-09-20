@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 
-ALLOWED_HOSTS = ['192.168.0.107']
+ALLOWED_HOSTS = ['192.168.0.107','192.168.0.107:8080','localhost:8080','0.0.0.0:8080']
 
 
 CSRF_TRUSTED_ORIGINS = [
