@@ -12,6 +12,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy entire project
 COPY . .
 
+# Static collect
+RUN python manage.py collectstatic --noinput
+
 # Expose port for Django
 EXPOSE 8000
 
