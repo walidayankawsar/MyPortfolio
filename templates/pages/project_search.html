@@ -69,7 +69,7 @@
                                 <span class="tag">{{ tag.Tag_name }}</span>
                             {% endfor %}
                         </div>
-                        <p>{{ post.short_description|truncatewords:30 }}</p>
+                        <p>{{ post.description|truncatewords:30 }}</p>
                         <p class="blog-date fst-italic fw-lighter">{{ post.date|date:"d-m-Y" }}</p>
                     </button>
                 </a>
