@@ -66,7 +66,7 @@
             <div class="tags-container">
                 <Span style="font-weight: 600;">Tags: </Span>
                 {% for tags in projects.tag.all %}
-                <span class="tag">{{ tags.Tag_name }}</span>
+                    <span class="tag">{{ tags.Tag_name }}</span>
                 {% endfor %}
             </div>
             <!-- project links -->
@@ -83,7 +83,7 @@
 
             <div class="post-details">
                 <p>
-                    {{ projects.ful_description  }}
+                    {{ projects.description  }}
                 </p>
             </div>
             <p class="post-date fst-italic fw-lighter">{{ projects.date }}</p>
