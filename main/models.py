@@ -23,8 +23,7 @@ class Project(models.Model):
     picture = models.ImageField(upload_to='picture of project/', blank=True, null=True)
     tag = models.ManyToManyField(Tags, related_name="posts", blank=True)
     date = models.DateField(blank=True, null=True)
-    short_description = models.TextField(max_length=500,blank=True, null=True)
-    ful_description = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
     github_link = models.URLField(blank=True, null=True)
     website_link = models.URLField(blank=True, null=True)
 
@@ -39,13 +38,12 @@ class Blog(models.Model):
     picture = models.ImageField(upload_to='picture of blog/', blank=True, null=True)
     tag = models.ManyToManyField(Tags, related_name="blog", blank=True)
     date = models.DateField(blank=True, null=True)
-    short_description = models.TextField(max_length=500, blank=True, null=True)
-    full_description = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
 
 class Contact(models.Model):
     github = models.URLField(blank=True, null=True)
     linkedin = models.URLField(blank=True, null=True)
-    mail = models.URLField(blank=True, null=True)
+    mail = models.CharField(max_length=30,blank=True, null=True)
     name = models.CharField(max_length=100, blank=True, null=True)
     phone = models.CharField(max_length=20, blank=True, null=True)
     message = models.TextField(blank=True, null=True)
