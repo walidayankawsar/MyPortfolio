@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from . models import Profile, Project, Publications, Blog, Contact, skill
+from . models import Profile, Project, Publications, Blog, Contact, skill, Education
 from django.db.models import Q
 
 # Create your views here.
@@ -17,7 +17,8 @@ def about(request):
     links = Contact.objects.first()
     abouts = Profile.objects.first()
     experience = skill.objects.all()
-    return render(request, 'pages/about.html', {'about': abouts, 'experience': experience, 'link': links})
+    edu = Education.objects.all()
+    return render(request, 'pages/about.html', {'about': abouts, 'experience': experience, 'link': links, 'edu': edu})
 
 def about_2(request, post_id):
     links = Contact.objects.first()
