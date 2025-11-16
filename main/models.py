@@ -11,7 +11,9 @@ class skill(models.Model):
     work = models.CharField(max_length=100, blank=True, null=True)
     work_description = models.TextField(blank=True, null=True)
     work_date = models.DateField(blank=True, null=True)
-    education = models.CharField(max_length=100, blank=True, null=True)
+
+class Education(models.Model):
+    achievements = models.CharField(max_length=100, blank=True, null=True)
     education_description = models.TextField(blank=True, null=True)
     education_date = models.DateField(blank=True, null=True)
 
