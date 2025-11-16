@@ -85,9 +85,9 @@
     <section class="py-5" id="work-experience-timeline">
         <h2 class="mt-2 pb-3">Education</h2>
         <ul class="timeline">
-            {% for education in experience %}
+            {% for education in edu %}
             <li class="timeline-item mb-5">
-                <h4 class="">{{ education.education }}</h4>
+                <h4 class="">{{ education.achievements }}</h4>
                 <p class="mb-2 fst-italic fw-lighter"> {{ education.education_date }}</p>
                 <p class="">{{ education.education_description|linebreaksbr }}</p>
             </li>
