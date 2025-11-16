@@ -59,7 +59,7 @@
 
     <section id="aboutTop">
         <h1>About Me</h1>
-        <p>{{ about.description }}</p>
+        <p>{{ about.description|linebreaksbr }}</p>
 
         <button id="CvBtn">
             <a target="_blank" href="{{ about.cv.url }}"> View My CV </a>
@@ -74,7 +74,7 @@
             <li class="timeline-item mb-5">
                 <h4 class="">{{ experience.work }}</h4>
                 <p class="mb-2 fst-italic fw-lighter"> {{ experience.work_date }}</p>
-                <p class="">{{ experience.work_description }}</p>
+                <p class="">{{ experience.work_description|linebreaksbr }}</p>
             </li>
             {% endfor %}
         </ul>
@@ -89,7 +89,7 @@
             <li class="timeline-item mb-5">
                 <h4 class="">{{ education.education }}</h4>
                 <p class="mb-2 fst-italic fw-lighter"> {{ education.education_date }}</p>
-                <p class="">{{ education.education_description }}</p>
+                <p class="">{{ education.education_description|linebreaksbr }}</p>
             </li>
             {% endfor %}
         </ul>
