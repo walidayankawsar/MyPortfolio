@@ -31,24 +31,24 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="../index">Home</a>
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about">About</a>
+                    <a class="nav-link" href="{% url 'about' %}">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="project">Projects</a>
+                    <a class="nav-link" href="{% url 'project' %}">Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="publications">Publications</a>
+                    <a class="nav-link" href="{% url 'publications' %}">Publications</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="blog">Blog</a>
+                    <a class="nav-link" href="{% url 'blog' %}">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact">Contact</a>
+                    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
                 </li>
-                </li>
+                <li>
                     <button class="nav-link" id="toggle-mode"><i class="fa-solid fa-sun"
                             style="color: #ffc800;"></i></button>
                 </li>
