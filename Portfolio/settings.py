@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import environ
+from django.contrib.messages import constants as messages
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,8 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 
-
-ALLOWED_HOSTS = ['192.168.0.107','192.168.0.107:8080','localhost:8080','0.0.0.0:8080','127.0.0.1:8000','127.0.0.1','walidayankawsar.onrender.com']
+ALLOWED_HOSTS = ['192.168.0.107', '192.168.0.107:8080', 'localhost:8080',
+                 '0.0.0.0:8080', '127.0.0.1:8000', '127.0.0.1', 'walidayankawsar.onrender.com']
 
 
 CSRF_TRUSTED_ORIGINS = [
@@ -53,9 +55,10 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware', 
-]
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+]
 
 
 ROOT_URLCONF = 'Portfolio.urls'
@@ -132,7 +135,6 @@ STATICFILES_DIRS = [
 ]
 
 
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR/'media'
 
@@ -142,22 +144,19 @@ MEDIA_ROOT = BASE_DIR/'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-
 # message section
 
-from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.DEBUG: 'debug',
     messages.INFO: 'info',
-    messages.SUCCESS:'success',
-    messages.WARNING:'warning',
-    messages.ERROR:'error',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'error',
 
 }
 
-import environ
 
-env =environ.Env()
+env = environ.Env()
 env.read_env(BASE_DIR / ".env")
 
 
@@ -175,4 +174,3 @@ EMAIL_PORT = env.int("EMAIL_PORT", default=587)
 EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=True)
 EMAIL_HOST_USER = env("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
-
