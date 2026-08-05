@@ -83,18 +83,23 @@ WSGI_APPLICATION = 'Portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+import os
+from pathlib import Path
 import environ
 
-env = environ.Env()
-environ.Env.read_env() # .env ফাইল রিড করার জন্য
+BASE_DIR = Path(__file__).resolve().parent.parent
 
+# django-environ সেটআপ
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+# DATABASES Конфигурация
 DATABASES = {
     'default': env.db(
         'DATABASE_URL',
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}" # DATABASE_URL না থাকলে ডিফল্ট SQLite3 ব্যবহার করবে
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
     )
 }
-
 
 
 
