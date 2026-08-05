@@ -83,12 +83,22 @@ WSGI_APPLICATION = 'Portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+import environ
+
+env = environ.Env()
+environ.Env.read_env() # .env ফাইল রিড করার জন্য
+
+DATABASES = {
+    'default': env.db(
+        'DATABASE_URL',
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}" # DATABASE_URL না থাকলে ডিফল্ট SQLite3 ব্যবহার করবে
+    )
+}
+
+
+
+
+
 
 
 # Password validation
