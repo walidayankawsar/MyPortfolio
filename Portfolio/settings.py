@@ -29,9 +29,9 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 INSTALLED_APPS = [
-    'cloudinary_storage',          # ১. staticfiles-এর আগে থাকবে
+    'cloudinary_storage',          # staticfiles-এর আগে থাকবে
     'django.contrib.staticfiles',
-    'cloudinary',                  # ২. staticfiles-এর পরে থাকবে
+    'cloudinary',                  # staticfiles-এর পরে থাকবে
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -61,6 +61,80 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
+                'django.contrib.### ১. `settings.py` ফাইলের সংশোধিত কোড
+
+আপনার ফাইলটি মোটের উপর ঠিকই আছে, তবে উৎপাদন পরিবেশ (Production/Vercel) এবং নিরাপত্তা বজায় রাখার জন্য কিছু গুরুত্বপূর্ণ জায়গায় সংশোধন প্রয়োজন:
+
+1. **`ALLOWED_HOSTS` & `DEBUG`:** `DEBUG = True` থাকলে কোনো সমস্যা নেই, তবে প্রোডাকশনে `ALLOWED_HOSTS = ['*']` ব্যবহার করা ঝুঁকিপূর্ণ।
+2. **`DATABASE_URL` চেক:** `env.db()` ব্যবহার করলে কোড আরও পরিষ্কার হয় এবং `env()` পার্সিং সঠিকভাবে কাজ করে।
+3. **`staticfiles_build` সানিটাইজেশন:** WhiteNoise এবং Cloudinary ব্যবহারের ক্ষেত্রে স্ট্যাটিক ফাইলের কনফিগারেশন আরও নিখুঁত করা হয়েছে।
+
+নিচে আপডেট করা `settings.py` কোড দেওয়া হলো:
+
+```python
+import os
+import environ
+import dj_database_url
+from pathlib import Path
+from django.contrib.messages import constants as messages
+
+# Base Directory
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Environ setup
+env = environ.Env()
+env.read_env(BASE_DIR / ".env")
+
+# Core Security Settings
+SECRET_KEY = env("SECRET_KEY", default="fallback-secret-key-for-dev")
+DEBUG = env.bool('DEBUG', default=False)
+
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['*'])
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8080",
+    "[http://192.168.0.107:8080](http://192.168.0.107:8080)",
+    "[http://0.0.0.0:8080](http://0.0.0.0:8080)",
+    "https://*.vercel.app",
+]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+
+# Application definition
+INSTALLED_APPS = [
+    'cloudinary_storage',          # staticfiles-এর আগে থাকবে
+    'django.contrib.staticfiles',
+    'cloudinary',                  # staticfiles-এর পরে থাকবে
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'main',
+]
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Static files serving
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+ROOT_URLCONF = 'Portfolio.urls'
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -72,10 +146,10 @@ WSGI_APPLICATION = 'Portfolio.wsgi.application'
 
 
 # Database Configuration
-if os.environ.get('DATABASE_URL'):
+if env("DATABASE_URL", default=None):
     DATABASES = {
         'default': dj_database_url.config(
-            default=os.environ.get('DATABASE_URL'),
+            default=env("DATABASE_URL"),
             conn_max_age=600,
             ssl_require=True
         )
@@ -107,7 +181,7 @@ USE_TZ = True
 
 # Static & Media Files Configuration
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles_build'  # Vercel-এর জন্য আবশ্যক
+STATIC_ROOT = BASE_DIR / 'staticfiles_build'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
@@ -123,18 +197,17 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': env('CLOUD_API_SECRET', default=''),
 }
 
-# Unified Storage Configuration
+# Unified Storage Configuration (Django 4.2+)
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
 
-# django-cloudinary-storage প্যাকেজের Compatibility Bug সমাধান করতে আবশ্যক
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # WhiteNoise Configuration
 WHITENOISE_MANIFEST_STRICT = False
