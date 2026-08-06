@@ -1,13 +1,13 @@
 from django.db import models
 from cloudinary_storage.storage import MediaCloudinaryStorage
-
+from cloudinary_storage.storage import RawMediaCloudinaryStorage
 cloudinary_storage = MediaCloudinaryStorage()
 
 # Create your models here.
 class Profile(models.Model):
     picture = models.ImageField(upload_to='profile/', blank=True, null=True)
     graduate = models.CharField(max_length=100, blank=True, null=True)
-    cv = models.FileField(upload_to='cv/', blank=True, null=True)
+    cv = models.FileField(upload_to='cv/', storage=RawMediaCloudinaryStorage(), blank=True, null=True)
     description = models.TextField(blank=True, null=True)
 
 class skill(models.Model):
