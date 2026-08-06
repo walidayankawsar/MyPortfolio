@@ -71,23 +71,24 @@ WSGI_APPLICATION = "Portfolio.wsgi.application"
 
 
 # Database Configuration
+import dj_database_url
+
 DATABASE_URL = env("DATABASE_URL", default=None)
 
-# DEBUG যদি True হয় (অর্থাৎ লোকাল এনভায়রনমেন্ট), তবে SQLite চলবে
-if DEBUG or not DATABASE_URL:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
-        }
-    }
-else:
+if DATABASE_URL:
     DATABASES = {
         "default": dj_database_url.config(
             default=DATABASE_URL,
             conn_max_age=0,
             ssl_require=True,
         )
+    }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
     }
 
 
