@@ -1,10 +1,13 @@
 #!/bin/bash
 echo "Building the project..."
 
-# Force install python packages
+# Python packages install
 python3 -m pip install -r requirements.txt --break-system-packages
 
-# Collect static files
-python3 manage.py collectstatic --noinput
+# Force folder creation
+mkdir -p staticfiles_build
+
+# Clear and collect static files
+python3 manage.py collectstatic --noinput --clear
 
 echo "Build completed!"
