@@ -69,22 +69,28 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "Portfolio.wsgi.application"
 
+
 # Database Configuration
-if env("DATABASE_URL", default=None):
-    DATABASES = {
-        "default": dj_database_url.config(
-            default=env("DATABASE_URL"),
-            conn_max_age=0,
-            ssl_require=True,
-        )
-    }
-else:
+DATABASE_URL = env("DATABASE_URL", default=None)
+
+# DEBUG যদি True হয় (অর্থাৎ লোকাল এনভায়রনমেন্ট), তবে SQLite চলবে
+if DEBUG or not DATABASE_URL:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
             "NAME": BASE_DIR / "db.sqlite3",
         }
     }
+else:
+    DATABASES = {
+        "default": dj_database_url.config(
+            default=DATABASE_URL,
+            conn_max_age=0,
+            ssl_require=True,
+        )
+    }
+
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -101,18 +107,13 @@ USE_I18N = True
 USE_TZ = True
 
 # Static & Media Configuration
-STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles_build' / 'static'  # Vercel staticfiles_build ফোল্ডার খোঁজে
-
-# WhiteNoise Config
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-WHITENOISE_MANIFEST_STRICT = False  # ফাইল না পেলেও যেন ক্র্যাশ না করে
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles_build"
 
 STATICFILES_DIRS = []
 if (BASE_DIR / "static").exists():
     STATICFILES_DIRS.append(BASE_DIR / "static")
 
-# Storage Setup
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
@@ -122,6 +123,8 @@ STORAGES = {
     },
 }
 
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+WHITENOISE_MANIFEST_STRICT = False
 
 
 
