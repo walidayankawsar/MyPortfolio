@@ -17,12 +17,6 @@ DEBUG = env.bool('DEBUG', default=False)
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:8080",
-    "http://192.168.0.107:8080",
-    "http://0.0.0.0:8080",
-    "https://*.vercel.app",
-]
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
