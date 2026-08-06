@@ -125,12 +125,13 @@ WHITENOISE_MANIFEST_STRICT = False
 
 
 # Cloudinary Configuration
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': env('CLOUDINARY_CLOUD_NAME', default=''),
-    'API_KEY': env('CLOUDINARY_API_KEY', default=''),
-    'API_SECRET': env('CLOUDINARY_API_SECRET', default=''),
-}
+import cloudinary
 
+cloudinary.config(
+    cloud_name=env("CLOUDINARY_CLOUD_NAME", default=""),
+    api_key=env("CLOUDINARY_API_KEY", default=""),
+    api_secret=env("CLOUDINARY_API_SECRET", default=""),
+)
 
 
 
