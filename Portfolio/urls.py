@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
-    path('pages/', include('main.urls')),
+    #path('pages/', include('main.urls')),
 ]
 
 # শুধুমাত্র Development/Local-এর জন্য static/media serve করুন
