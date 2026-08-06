@@ -167,6 +167,8 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': os.environ.get('CLOUD_API_SECRET'),
 }
 
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 # Django 4.2+ / Django 5.x-এর জন্য নতুন Storage Configuration
 STORAGES = {
     "default": {
