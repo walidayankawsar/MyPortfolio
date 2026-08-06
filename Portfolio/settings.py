@@ -101,8 +101,12 @@ USE_I18N = True
 USE_TZ = True
 
 # Static & Media Configuration
-STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles_build"
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles_build' / 'static'  # Vercel staticfiles_build ফোল্ডার খোঁজে
+
+# WhiteNoise Config
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+WHITENOISE_MANIFEST_STRICT = False  # ফাইল না পেলেও যেন ক্র্যাশ না করে
 
 STATICFILES_DIRS = []
 if (BASE_DIR / "static").exists():
@@ -117,9 +121,6 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
-
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
-WHITENOISE_MANIFEST_STRICT = False
 
 
 
