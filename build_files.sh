@@ -1,10 +1,10 @@
 #!/bin/bash
 echo "Building the project..."
 
-# Python dependencies install
-python3 -m pip install -r requirements.txt
+# Force install python packages
+python3 -m pip install -r requirements.txt --break-system-packages
 
-# Static files collect (NO --clear flag)
+# Collect static files
 python3 manage.py collectstatic --noinput
 
 echo "Build completed!"
