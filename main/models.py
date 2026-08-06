@@ -25,7 +25,7 @@ class Tags(models.Model):
 
 class Project(models.Model):
     project_name = models.CharField(max_length=100, blank=True, null=True)
-    picture = models.ImageField(upload_to='picture of project/', blank=True, null=True)
+    picture = models.ImageField(upload_to='picture_of_project/', blank=True, null=True)
     tag = models.ManyToManyField(Tags, related_name="posts", blank=True)
     date = models.DateField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
@@ -40,7 +40,7 @@ class Publications(models.Model):
 
 class Blog(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
-    picture = models.ImageField(upload_to='picture of blog/', blank=True, null=True)
+    picture = models.ImageField(upload_to='picture_of_blog/', blank=True, null=True)
     tag = models.ManyToManyField(Tags, related_name="blog", blank=True)
     date = models.DateField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
