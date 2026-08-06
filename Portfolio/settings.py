@@ -26,12 +26,11 @@ CSRF_TRUSTED_ORIGINS = [
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
-
 # Application definition
 INSTALLED_APPS = [
     "cloudinary_storage",  # staticfiles-এর পূর্বে থাকতে হবে
     "django.contrib.staticfiles",
-    "cloudinary",  # staticfiles-এর পরে থাকবে
+    "cloudinary",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -70,13 +69,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "Portfolio.wsgi.application"
 
-
 # Database Configuration
 if env("DATABASE_URL", default=None):
     DATABASES = {
         "default": dj_database_url.config(
             default=env("DATABASE_URL"),
-            conn_max_age=600,
+            conn_max_age=0,
             ssl_require=True,
         )
     }
@@ -88,7 +86,6 @@ else:
         }
     }
 
-
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
@@ -97,22 +94,19 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
-
 # Internationalization
 LANGUAGE_CODE = "en-us"
 TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
-
-# Static & Media Files Configuration
 # Static & Media Configuration
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles_build"
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
+STATICFILES_DIRS = []
+if (BASE_DIR / "static").exists():
+    STATICFILES_DIRS.append(BASE_DIR / "static")
 
 # Storage Setup
 STORAGES = {
@@ -127,11 +121,7 @@ STORAGES = {
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 WHITENOISE_MANIFEST_STRICT = False
 
-
-
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
 
 # Message Tags
 MESSAGE_TAGS = {
@@ -141,7 +131,6 @@ MESSAGE_TAGS = {
     messages.WARNING: "warning",
     messages.ERROR: "error",
 }
-
 
 # Email Backend Configuration
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
