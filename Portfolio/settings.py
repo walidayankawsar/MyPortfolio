@@ -159,11 +159,24 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
+# Cloudinary Credentials Setup
+# os.environ.get() ব্যবহার করলে env Variable না থাকলেও Server crash করবে না
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': env('CLOUD_NAME'),
-    'API_KEY': env('CLOUD_API_KEY'),
-    'API_SECRET': env('CLOUD_API_SECRET')
+    'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUD_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUD_API_SECRET'),
+}
+
+# Django 4.2+ / Django 5.x-এর জন্য নতুন Storage Configuration
+STORAGES = {
+    "default": {
+        # ছবি এবং PDF/অন্যান্য ফাইল উভয়টাই সঠিকভাবে Cloudinary-তে আপলোড করার জন্য
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        # Static files (CSS/JS) Vercel/WhiteNoise দিয়ে হ্যান্ডেল করার জন্য
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
 }
 
 # Default primary key field type
