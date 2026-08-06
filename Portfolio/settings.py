@@ -7,7 +7,7 @@ from django.contrib.messages import constants as messages
 # Base Directory
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Environ setup (ফাইল লোডের শুরুতেই রাখা আবশ্যক)
+# Environ setup
 env = environ.Env()
 env.read_env(BASE_DIR / ".env")
 
@@ -21,7 +21,7 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8080",
     "http://192.168.0.107:8080",
     "http://0.0.0.0:8080",
-    "https://*.vercel.app", # Vercel-এর ফর্ম এবং এডমিন প্যানেলের জন্য জরুরি
+    "https://*.vercel.app",
 ]
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -29,9 +29,9 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 INSTALLED_APPS = [
-    'cloudinary_storage',
+    'cloudinary_storage',          # ১. staticfiles-এর আগে থাকবে
     'django.contrib.staticfiles',
-    'cloudinary',
+    'cloudinary',                  # ২. staticfiles-এর পরে থাকবে
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # ২য় স্থানে হোয়াইটনয়েজ থাকা জরুরি
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # WhiteNoise Middleware
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -71,7 +71,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Portfolio.wsgi.application'
 
 
-# Database Configuration (Neon PostgreSQL vs Local SQLite)
+# Database Configuration
 if os.environ.get('DATABASE_URL'):
     DATABASES = {
         'default': dj_database_url.config(
@@ -105,33 +105,36 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static & Media Files
+# Static & Media Files Configuration
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = BASE_DIR / 'staticfiles_build'  # Vercel deployment-এর জন্য আবশ্যক
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+] if (BASE_DIR / 'static').exists() else []
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Cloudinary Setup
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
-    'API_KEY': os.environ.get('CLOUD_API_KEY'),
-    'API_SECRET': os.environ.get('CLOUD_API_SECRET'),
+    'CLOUD_NAME': env('CLOUD_NAME', default=''),
+    'API_KEY': env('CLOUD_API_KEY', default=''),
+    'API_SECRET': env('CLOUD_API_SECRET', default=''),
 }
 
-# Storage Configuration (Django 4.2+ & 5.x)
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
+# Unified Storage Configuration (Django 4.2+)
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
     },
 }
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# WhiteNoise Configuration (Missing Cloudinary static files crash আটকায়)
+WHITENOISE_MANIFEST_STRICT = False
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -146,7 +149,7 @@ MESSAGE_TAGS = {
 }
 
 
-# Email Backend Configuration (Default value দেওয়া হয়েছে যাতে Crash না করে)
+# Email Backend Configuration
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = env("EMAIL_HOST", default="smtp.gmail.com")
 EMAIL_PORT = env.int("EMAIL_PORT", default=587)
