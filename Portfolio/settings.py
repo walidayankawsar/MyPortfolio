@@ -17,6 +17,12 @@ DEBUG = env.bool('DEBUG', default=False)
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8080",
+    "http://192.168.0.107:8080",
+    "http://0.0.0.0:8080",
+    "https://*.vercel.app",
+]
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -36,7 +42,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # WhiteNoise Middleware
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -101,7 +107,7 @@ USE_TZ = True
 
 # Static & Media Files Configuration
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles_build'  # Vercel deployment-এর জন্য আবশ্যক
+STATIC_ROOT = BASE_DIR / 'staticfiles_build'  # Vercel-এর জন্য আবশ্যক
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
@@ -117,7 +123,7 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': env('CLOUD_API_SECRET', default=''),
 }
 
-# Unified Storage Configuration (Django 4.2+)
+# Unified Storage Configuration
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
@@ -127,7 +133,10 @@ STORAGES = {
     },
 }
 
-# WhiteNoise Configuration (Missing Cloudinary static files crash আটকায়)
+# django-cloudinary-storage প্যাকেজের Compatibility Bug সমাধান করতে আবশ্যক
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+
+# WhiteNoise Configuration
 WHITENOISE_MANIFEST_STRICT = False
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
