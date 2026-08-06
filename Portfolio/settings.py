@@ -114,17 +114,18 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-# Storage Configuration (WhiteNoise Compression নিষ্ক্রিয় করা হয়েছে)
+# Storage Setup
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
 
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+WHITENOISE_MANIFEST_STRICT = False
 
 
 
