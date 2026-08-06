@@ -157,6 +157,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Media files (User uploaded files)
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Cloudinary Credentials Setup
 # os.environ.get() ব্যবহার করলে env Variable না থাকলেও Server crash করবে না
@@ -166,10 +167,8 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': os.environ.get('CLOUD_API_SECRET'),
 }
 
-if ENVIRONMENT == 'production' or POSTGRES_LOCALLY == True:
-    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-else:
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Django 4.2+ / Django 5.x-এর জন্য নতুন Storage Configuration
 STORAGES = {
