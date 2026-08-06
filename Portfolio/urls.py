@@ -5,10 +5,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('main.urls')),  # আপনার মূল অ্যাপের নাম অনুযায়ী দেবেন
+    path('', include('main.urls')),
+    path('pages/', include('main.urls')),
 ]
 
-# শুধুমাত্র Local machine-এ DEBUG=True থাকলে media/static সার্ভ হবে
+# শুধুমাত্র Development/Local-এর জন্য static/media serve করুন
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
