@@ -1,4 +1,7 @@
 from django.db import models
+from cloudinary_storage.storage import MediaCloudinaryStorage
+
+cloudinary_storage = MediaCloudinaryStorage()
 
 # Create your models here.
 class Profile(models.Model):
