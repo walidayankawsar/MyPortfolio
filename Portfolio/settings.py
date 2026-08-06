@@ -106,6 +106,7 @@ USE_TZ = True
 
 
 # Static & Media Files Configuration
+# Static & Media Configuration
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles_build"
 
@@ -113,31 +114,20 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
-
-
-# Cloudinary Credentials Setup
-CLOUDINARY_STORAGE = {
-    "CLOUD_NAME": env("CLOUD_NAME", default=""),
-    "API_KEY": env("CLOUD_API_KEY", default=""),
-    "API_SECRET": env("CLOUD_API_SECRET", default=""),
-}
-
-
-# Storage Configuration (Django 4.2+)
-# Storage Configuration
+# Storage Configuration (WhiteNoise Compression নিষ্ক্রিয় করা হয়েছে)
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
     },
 }
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
-WHITENOISE_MANIFEST_STRICT = False
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+
+
+
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
